@@ -61,8 +61,8 @@ struct fn_struct_s
     void*               data[ 0 ]; /**< Pointer array. */
 } FR_CACHE_LINE_ALIGN;
 typedef struct fn_struct_s fn_s; /**< Node struct. */
-typedef fn_s*              fn_t; /**< Node pointer. */
-typedef fn_t*              fn_p; /**< Node pointer reference. */
+typedef fn_s*              fn_t; /**< Node. */
+typedef fn_t*              fn_p; /**< Node reference. */
 
 
 struct fr_mem_struct_s;
@@ -80,8 +80,8 @@ struct fr_struct_s
     struct fr_mem_struct_s* mem;  /**< Memory API. */
 } FR_CACHE_LINE_ALIGN;
 typedef struct fr_struct_s fr_s; /**< Position struct. */
-typedef fr_s*              fr_t; /**< Position pointer. */
-typedef fr_t*              fr_p; /**< Position pointer reference. */
+typedef fr_s*              fr_t; /**< Position. */
+typedef fr_t*              fr_p; /**< Position reference. */
 
 
 /**
@@ -122,18 +122,18 @@ typedef fr_mem_s*              fr_mem_t; /**< Pooler pointer. */
 
 
 
-#ifdef FRAMER_MEM_API
+#ifdef FRAMER_USE_MEM_API
 
 /*
- * FRAMER_MEM_API allows to use custom memory allocation functions,
+ * FRAMER_USE_MEM_API allows to use custom memory allocation functions,
  * instead of the default: fr_malloc, fr_free, fr_realloc.
  *
- * If FRAMER_MEM_API is used, the user must provide implementation for the
+ * If FRAMER_USE_MEM_API is used, the user must provide implementation for the
  * below functions and they must be compatible with malloc etc.
  */
 
 extern void* fr_malloc( size_t size );
-extern void fr_free( void* ptr );
+extern void  fr_free( void* ptr );
 extern void* fr_realloc( void* ptr, size_t size );
 
 #else
